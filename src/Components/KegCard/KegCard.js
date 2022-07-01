@@ -21,11 +21,26 @@ const KegCard = ({ kegsList, filterKeg }) => {
                 <h4>{keg.name} ${keg.price} </h4>
                 <h4> by {keg.brand} </h4>
                 <h4>Contains {keg.alcoholContent}% Alcohol</h4>
+                <h4>Pints remaining: {keg.pintsRemaining}</h4>
               </div>
             </Link>
+
+            <div className="drink">
+              <button className="drink" onClick={(e)=>{
+                e.preventDefault();
+                keg.pintsRemaining-=1
+                console.log("clicky")
+              }}>DRINK!</button>
+            </div>
+
+            {console.log(keg.pintsRemaining)}
+
           </div>
       )
+      
   });
+
+  
 
   return (
     <div className="keg-card-wrap">

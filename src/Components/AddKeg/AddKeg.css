@@ -1,0 +1,21 @@
+.add-ket-container, .form-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  margin: 10vh auto;
+
+  border-radius: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto;
+  width: 40%;
+}
+
+.keg-menu {
+  height: 50vh;
+  width: 70vw;
+}

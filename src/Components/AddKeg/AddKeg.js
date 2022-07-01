@@ -1,8 +1,9 @@
 import React from 'react'
+import './AddKeg.css'
 import { Link } from 'react-router-dom'
 import uuid from 'react-uuid'
 import PropTypes from 'prop-types';
-
+import KegCard from '../KegCard/KegCard'
 
 export default class AddKeg extends React.Component {
 
@@ -13,8 +14,11 @@ export default class AddKeg extends React.Component {
     price: '',
     alcoholContent: Math.floor(Math.random()*10),
     pintsRemaining: 124,
-    decrementPintsRemaining: () => this.pintsRemaining -= 1
+    pintsMax: 124,
+    decrementPintsRemaining: () => this.drink()
   }
+
+  drink = () => this.setState({pintsRemaining: -1 });
 
   updateLocalStorage = () => {
     this.props.AddNewKeg(this.state);
@@ -29,9 +33,9 @@ export default class AddKeg extends React.Component {
       name: '',
       brand: '',
       price: '',
-      alcoholContent: Math.floor(Math.random()*10),
-      pintsRemaining: 124,
-      decrementPintsRemaining: () => this.pintsRemaining -= 1
+      // alcoholContent: Math.floor(Math.random()*10),
+      // pintsRemaining: this.pintsRemaining,
+      // decrementPintsRemaining: () => this.pintsRemaining -= 1
     })
   }
 
@@ -68,6 +72,11 @@ export default class AddKeg extends React.Component {
                 <Link to="/">
                   <button>Go Back</button>
                 </Link>
+
+                <div className="keg-menu">
+                  <KegCard kegsList={this.props.kegsList} filterKeg={this.props.filterKeg} />
+                </div>
+
 
 
             </form>

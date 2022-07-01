@@ -7,11 +7,8 @@ Solely to demonstrate an interworking between established and updated features.
 
 - All kegs come full at 124 pints per keg.
 - Kegs will show in Bar Service Area in cards
-
-
-### Features to add:
-- 
-
+- It Creates, Reads, and Deletes.
+- Data almost persists in localStorage, but rerenders on mount, so will overwrite the dependencies
 
 
 

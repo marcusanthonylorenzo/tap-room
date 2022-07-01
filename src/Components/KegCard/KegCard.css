@@ -17,7 +17,7 @@
   height: 90%;
   width: 20%;
   border-radius: 60px;
-  transform: scale(0.6);
+  transform: scale(0.7);
   opacity: 90%;
 }
 
@@ -28,4 +28,10 @@
 .keg h4 {
   font-size: 2rem;
   color: aliceblue;
+}
+
+.keg button {
+  height: 2rem;
+  width: 6rem;
+  box-shadow: 1px 3px 2px 1px rgba(50, 50, 50, 0.8);
 }

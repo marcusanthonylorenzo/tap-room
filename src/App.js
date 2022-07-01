@@ -48,7 +48,7 @@ function App() {
           
 
             <Route path="/Add" element={
-              <AddKeg AddNewKeg={AddNewKeg} />
+              <AddKeg kegsList={kegsList} filterKeg={filterKeg} AddNewKeg={AddNewKeg} />
             }/>
 
 
