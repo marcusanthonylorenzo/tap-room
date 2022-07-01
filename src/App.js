@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddKeg from './Components/AddKeg/AddKeg'
 import Home from './Components/Home/Home'
+import Details from './Components/KegDetails/KegDetails'
 
 function App() {
 
@@ -48,6 +49,11 @@ function App() {
 
             <Route path="/Add" element={
               <AddKeg AddNewKeg={AddNewKeg} />
+            }/>
+
+
+            <Route path="/Details/:id" element={
+              <Details kegsList={kegsList} filterKeg={filterKeg}/>
             }/>
             
           </Routes>

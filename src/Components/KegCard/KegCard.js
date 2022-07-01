@@ -8,21 +8,24 @@ const KegCard = ({ kegsList, filterKeg }) => {
 
   const getAllKegs = kegsList.map((keg, i) => {
       return (
+
           <div key={i} className="keg">
             <Link to={"/"}>
               <button className="delete" onClick={ () => {
                 filterKeg(keg.id);
               }}>x</button>
             </Link>
-            <div className="keg-details">
-              <h4>{keg.name} ${keg.price} </h4>
-              <h4> by {keg.brand} </h4>
-              <h4>Contains {keg.alcoholContent}% Alcohol</h4>
-            </div>
+
+            <Link to={`/Details/${keg.id}`}>
+              <div className="keg-details">
+                <h4>{keg.name} ${keg.price} </h4>
+                <h4> by {keg.brand} </h4>
+                <h4>Contains {keg.alcoholContent}% Alcohol</h4>
+              </div>
+            </Link>
           </div>
       )
   });
-
 
   return (
     <div className="keg-card-wrap">

@@ -11,13 +11,14 @@ const Home = ({kegsList, filterKeg }) => {
 
           <h5>HEY! Check out what we have on offer!</h5>
 
+          <Link to="/Add">
+            <button>Add a Keg!</button>
+          </Link>
+
           <div className="keg-menu">
             <KegCard kegsList={kegsList} filterKeg={filterKeg} />
           </div>
 
-          <Link to="/Add">
-            <button>Add a Keg!</button>
-          </Link>
 
 
     </div>
