@@ -1,5 +1,12 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -37,4 +44,14 @@ button {
   border: none;
   margin: 2%;
   box-shadow: 1px 3px 2px 1px rgba(50, 50, 50, 0.8);
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.keg-details h4 {
+  background-color: rgba(140, 94, 94, 0.568);
+  border-radius: 1rem;
 }

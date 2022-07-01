@@ -44,6 +44,8 @@ export default class AddKeg extends React.Component {
       <>
         <div key={this.state.id} className="add-keg-container">
 
+          <h2 style={{marginTop: `5vh`}}> Place an order for more stock here! </h2>
+
           <div className="form-wrap">
             <form className="form" onSubmit={this.submitAndClear}>
 

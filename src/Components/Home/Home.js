@@ -13,7 +13,7 @@ const Home = ({kegsList, filterKeg }) => {
     <>
     <div className="home-container">
 
-          {kegsList.length === 0 ? nothing : offering}
+          { kegsList.length === 0 ? nothing : offering}
 
 
           <Link to="/Add">
