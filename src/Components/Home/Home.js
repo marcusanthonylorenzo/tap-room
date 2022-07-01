@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import KegCard from '../KegCard/KegCard'
 
-const Home = ({readLocalStorage, filterKeg }) => {
+const Home = ({kegsList, filterKeg }) => {
   //will need to be careful with Prop Drilling!
 
   return (
@@ -12,7 +12,7 @@ const Home = ({readLocalStorage, filterKeg }) => {
           <h5>HEY! Check out what we have on offer!</h5>
 
           <div className="keg-menu">
-            <KegCard readLocalStorage={readLocalStorage} filterKeg={filterKeg} />
+            <KegCard kegsList={kegsList} filterKeg={filterKeg} />
           </div>
 
           <Link to="/Add">

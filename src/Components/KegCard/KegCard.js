@@ -1,18 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './KegCard.css'
 
-const KegCard = ({ readLocalStorage, filterKeg }) => {
+const KegCard = ({ kegsList, filterKeg }) => {
 
-  
+  // const readLocalStorage = localStorage.getItem("kegs")
 
-  const retrieveKegs = JSON.parse(readLocalStorage())
-
-  const getAllKegs = retrieveKegs.map((keg, i) => {
+  const getAllKegs = kegsList.map((keg, i) => {
       return (
           <div key={i} className="keg">
-            <button className="delete" onClick={ () => {
-              filterKeg(keg.id);
-            }}>x</button>
+            <Link to={"/"}>
+              <button className="delete" onClick={ () => {
+                filterKeg(keg.id);
+              }}>x</button>
+            </Link>
             <div className="keg-details">
               <h4>{keg.name} ${keg.price} </h4>
               <h4> by {keg.brand} </h4>

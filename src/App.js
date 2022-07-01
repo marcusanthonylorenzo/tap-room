@@ -1,24 +1,23 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddKeg from './Components/AddKeg/AddKeg'
 import Home from './Components/Home/Home'
 
 function App() {
-  
-  const readLocalStorage = () => localStorage.getItem("kegs")
+
   //set state for a list of added Kegs
   const [kegsList, setKegsList] = useState([]);
 
-
-  //check how many kegs in stock
   useEffect(() => {
-    if (kegsList.length > 0) {
+    localStorage.setItem("kegs", []);
+  })
+
+  // check how many kegs in stock
+  useEffect(() => {
       const kegsListJSON = JSON.stringify(kegsList);
       localStorage.setItem("kegs", kegsListJSON);
-    }
-  }, [kegsList]);
-
+  })
 
   //add keg function, newKeg as the second index is a push 
   const AddNewKeg = (newKeg) => {
@@ -32,20 +31,18 @@ function App() {
       setKegsList(updateKegList)
       console.log(kegsList)
   }
-  const FilterContext = createContext(filterKeg)
   console.log(kegsList)
 
   return (
     <div className="App">
       
-      <FilterContext.Provider value={filterKeg}> 
       
         <Router>
           <Routes>
 
 
             <Route path="/" element={
-              <Home readLocalStorage={readLocalStorage} filterKeg={filterKeg}/>
+              <Home kegsList={kegsList} filterKeg={filterKeg}/>
             } />
           
 
@@ -56,7 +53,6 @@ function App() {
           </Routes>
         </Router>
 
-      </FilterContext.Provider>
 
     </div>
   );
