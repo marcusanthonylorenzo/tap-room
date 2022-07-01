@@ -8,10 +8,16 @@ export default class AddKeg extends React.Component {
     id: uuid(),
     name: '',
     brand: '',
-    price: 0,
+    price: '',
     alcoholContent: Math.floor(Math.random()*10),
     pintsRemaining: 124,
     decrementPintsRemaining: () => this.pintsRemaining -= 1
+  }
+
+  updateLocalStorage = (e) => {
+    e.preventDefault()
+    this.props.AddNewKeg(this.state);
+    // console.log(this.props.state, this.props.localStorageKey)
   }
 
   
@@ -22,7 +28,7 @@ export default class AddKeg extends React.Component {
         <div key={this.state.id} className="add-keg-container">
 
           <div className="form-wrap">
-            <form className="form" onSubmit={this.props.AddNewKeg}>
+            <form className="form" onSubmit={this.updateLocalStorage}>
 
               <input type="text" className="form-input"
                 placeholder="Name"

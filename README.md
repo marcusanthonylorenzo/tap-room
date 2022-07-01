@@ -17,6 +17,13 @@ Solely to demonstrate an interworking between established and updated features.
 
 ### Design:
 
+
+#### I'll get better at this:
+
+![Tap Room Flowchart](https://user-images.githubusercontent.com/100096239/176937005-72f21f24-594a-4f19-8132-ef4f2c3111c9.jpg)
+
+---
+
 - Bar Service Area (READ)
 
   LOCAL_STORAGE_KEGS = useState() //pass to AddKegs Class, KegCard
@@ -74,11 +81,4 @@ Solely to demonstrate an interworking between established and updated features.
 
 <!-- - KegDetails :{id}  //React Router -->
 
-- 
-=======
-# The Tap Room!
 
-### I'll get better at this:
-
-![Tap Room Flowchart](https://user-images.githubusercontent.com/100096239/176937005-72f21f24-594a-4f19-8132-ef4f2c3111c9.jpg)
->>>>>>> 87a725fe929ce4bba605b0a54b38c6d87ae662f3
