@@ -6,22 +6,31 @@ import Home from './Components/Home/Home'
 
 function App() {
   
-  const readLocalStorage = localStorage.getItem("kegs")
-  // const [localStorageKey, setLocalStorageKey] = useState([])
+  const readLocalStorage = () => localStorage.getItem("kegs")
   //set state for a list of added Kegs
   const [kegsList, setKegsList] = useState([]);
 
 
   //when component mounts, check kegsList
+  // useEffect(() => {
+  //   if (!readLocalStorage) {
+  //     console.log(typeof readLocalStorage)
+  //     localStorage.setItem("kegs", JSON.stringify(kegsList))
+  //     console.log("storage set")
+  //   }
+  //   console.log(readLocalStorage(), kegsList)
+  //   localStorage.setItem("kegs", [...kegsList])
+  //   console.log(readLocalStorage(), kegsList)
+  // }, [])
+
   useEffect(() => {
-    if (!readLocalStorage) {
-      localStorage.setItem("kegs", kegsList)
-      console.log("storage set")
+    if (kegsList.length > 0) {
+      console.log(JSON.stringify(kegsList), [kegsList])
+      const kegsListJSON = JSON.stringify(kegsList);
+      localStorage.setItem("kegs", kegsListJSON);
+      console.log("set")
     }
-    console.log(readLocalStorage, kegsList)
-    localStorage.setItem("kegs", [...kegsList])
-    console.log(readLocalStorage, kegsList)
-  }, [])
+  })
 
 
   //add keg function, newKeg as the second index is a push 

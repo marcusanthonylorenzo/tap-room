@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import uuid from 'react-uuid'
+import PropTypes from 'prop-types';
 
 
 export default class AddKeg extends React.Component {
@@ -14,13 +16,24 @@ export default class AddKeg extends React.Component {
     decrementPintsRemaining: () => this.pintsRemaining -= 1
   }
 
-  updateLocalStorage = (e) => {
-    e.preventDefault()
+  updateLocalStorage = () => {
     this.props.AddNewKeg(this.state);
-    // console.log(this.props.state, this.props.localStorageKey)
   }
 
-  
+
+  submitAndClear = (e) => {
+    e.preventDefault()
+    this.updateLocalStorage();
+    this.setState({
+      id: uuid(),
+      name: '',
+      brand: '',
+      price: '',
+      alcoholContent: Math.floor(Math.random()*10),
+      pintsRemaining: 124,
+      decrementPintsRemaining: () => this.pintsRemaining -= 1
+    })
+  }
 
   render(){
     return (
@@ -28,7 +41,7 @@ export default class AddKeg extends React.Component {
         <div key={this.state.id} className="add-keg-container">
 
           <div className="form-wrap">
-            <form className="form" onSubmit={this.updateLocalStorage}>
+            <form className="form" onSubmit={this.submitAndClear}>
 
               <input type="text" className="form-input"
                 placeholder="Name"
@@ -48,9 +61,13 @@ export default class AddKeg extends React.Component {
                   value={this.state.price} required
                 />
 
-              <button type="submit" className="form-btn" onClick={() => {
-                console.log(this.state.name, this.state.alcoholContent, this.state.uuid)
-              }}><h5>Add New Keg</h5></button>
+                <button type="submit" className="form-btn" onClick={() => {
+                  console.log(this.state.name, this.state.alcoholContent, this.state.uuid)
+                }}><h5>Add New Keg</h5></button>
+
+                <Link to="/">
+                  <button>Go Back</button>
+                </Link>
 
 
             </form>
@@ -60,4 +77,11 @@ export default class AddKeg extends React.Component {
       </>
     )
   }
+}
+
+AddKeg.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  brand: PropTypes.string,
+  price: PropTypes.string,
 }
