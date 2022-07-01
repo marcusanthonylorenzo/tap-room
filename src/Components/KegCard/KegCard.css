@@ -1,0 +1,31 @@
+.keg-card-wrap {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: center;
+  height: 70vh;
+}
+
+.keg {
+  background-image: url('../../static/images/beer.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 90%;
+  width: 20%;
+  border-radius: 60px;
+  transform: scale(0.6);
+  opacity: 90%;
+}
+
+.keg-details {
+  margin-top: 60%;
+}
+
+.keg h4 {
+  font-size: 2rem;
+  color: aliceblue;
+}

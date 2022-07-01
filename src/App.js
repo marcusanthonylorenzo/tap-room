@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddKeg from './Components/AddKeg/AddKeg'
@@ -11,56 +11,52 @@ function App() {
   const [kegsList, setKegsList] = useState([]);
 
 
-  //when component mounts, check kegsList
-  // useEffect(() => {
-  //   if (!readLocalStorage) {
-  //     console.log(typeof readLocalStorage)
-  //     localStorage.setItem("kegs", JSON.stringify(kegsList))
-  //     console.log("storage set")
-  //   }
-  //   console.log(readLocalStorage(), kegsList)
-  //   localStorage.setItem("kegs", [...kegsList])
-  //   console.log(readLocalStorage(), kegsList)
-  // }, [])
-
+  //check how many kegs in stock
   useEffect(() => {
     if (kegsList.length > 0) {
-      console.log(JSON.stringify(kegsList), [kegsList])
       const kegsListJSON = JSON.stringify(kegsList);
       localStorage.setItem("kegs", kegsListJSON);
-      console.log("set")
     }
-  })
+  }, [kegsList]);
 
 
   //add keg function, newKeg as the second index is a push 
   const AddNewKeg = (newKeg) => {
-    console.log("parent level")
     setKegsList([...kegsList, newKeg])
-    console.log(newKeg)
   };
 
-  console.log(kegsList, readLocalStorage)
 
+  //filter remaining kegs
+  const filterKeg = (id) => {
+      const updateKegList = kegsList.filter((keg) => keg.id !== id)
+      setKegsList(updateKegList)
+      console.log(kegsList)
+  }
+  const FilterContext = createContext(filterKeg)
+  console.log(kegsList)
 
   return (
     <div className="App">
       
+      <FilterContext.Provider value={filterKeg}> 
       
-      <Router>
-        <Routes>
+        <Router>
+          <Routes>
 
-          <Route path="/" element={
-            <Home />
-          } />
 
-          <Route path="/Add" element={
-            <AddKeg AddNewKeg={AddNewKeg} />
-          }/>
+            <Route path="/" element={
+              <Home readLocalStorage={readLocalStorage} filterKeg={filterKeg}/>
+            } />
           
-        </Routes>
-      </Router>
 
+            <Route path="/Add" element={
+              <AddKeg AddNewKeg={AddNewKeg} />
+            }/>
+            
+          </Routes>
+        </Router>
+
+      </FilterContext.Provider>
 
     </div>
   );
