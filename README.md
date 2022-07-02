@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 # The Tap Room
 
 ## Summary:
-### For this project, I will use a combination of Class Components with React 18, for balance and experience.
+### For this challenge, I will use a combination of Class Components with React 18, for balance and experience.
 Solely to demonstrate an interworking between established and updated features.
 
 - All kegs come full at 124 pints per keg.
@@ -10,6 +10,12 @@ Solely to demonstrate an interworking between established and updated features.
 - Kegs will show in Bar Service Area AND Place Order area
 - It Creates, Reads, and Deletes.
 - Data almost persists in localStorage, but rerenders on mount, so will overwrite the dependencies
+- Lots of focus on useEffect hooks and trying to understand lifecycle.
+
+
+
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/100096239/176978773-9f782b57-d35f-42f6-bdf9-056a638dc09f.gif)
+
 
 
 
