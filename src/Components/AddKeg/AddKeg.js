@@ -15,10 +15,18 @@ export default class AddKeg extends React.Component {
     alcoholContent: Math.floor(Math.random()*10),
     pintsRemaining: 124,
     pintsMax: 124,
-    decrementPintsRemaining: () => this.drink()
+    decrementPintsRemaining: () => {
+      if (this.pintsRemaining === 0) {
+        console.log("welp")
+        this.setState({ pintsRemaining: `SOLD OUT` });
+      }
+      this.drink()
+    }
   }
 
-  drink = () => this.setState({pintsRemaining: -1 });
+  drink = () => {
+    this.setState({pintsRemaining: -1 });
+  };
 
   updateLocalStorage = () => {
     this.props.AddNewKeg(this.state);
@@ -38,6 +46,7 @@ export default class AddKeg extends React.Component {
       // decrementPintsRemaining: () => this.pintsRemaining -= 1
     })
   }
+
 
   render(){
     return (
@@ -68,7 +77,7 @@ export default class AddKeg extends React.Component {
                 />
 
                 <button type="submit" className="form-btn" onClick={() => {
-                  console.log(this.state.name, this.state.alcoholContent, this.state.uuid)
+                  console.log(this.state.name, this.state.alcoholContent, this.state.id)
                 }}><h5>Add New Keg</h5></button>
 
                 <Link to="/">

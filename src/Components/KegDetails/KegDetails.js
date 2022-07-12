@@ -1,20 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
-const KegDetails = ({ kegsList, filterKeg }) => {
+const KegDetails = ({ kegsList }) => {
 
-  const thisKeg = kegsList[0];
+  const params = useParams()
+  const kegFiltered = kegsList.filter(k => {
+    if (k.id === params.id) {
+      return k
+    }
+  })
+  const keg = kegFiltered[0]
+
 
   return (
     <>
       <div className="keg-deets">
         <div className="keg-info" style={{marginTop: `0vh`}}>
 
-         <h4> Name: {thisKeg.name} </h4>
-         <h4> Brand: {thisKeg.brand} </h4>
-         <h4> Price: {thisKeg.price} </h4>
-         <h4> Alcohol %: {thisKeg.alcoholContent} </h4>
-         <h4> Remaining Pints: {thisKeg.remainingPints} </h4>
+        <h4> Name: {keg.name} </h4>
+        <h4> Brand: {keg.brand} </h4>
+        <h4> Price: {keg.price} </h4>
+        <h4> Alcohol %: {keg.alcoholContent} </h4>
+        <h4> Remaining Pints: {keg.pintsRemaining} </h4>
 
         </div>
   
